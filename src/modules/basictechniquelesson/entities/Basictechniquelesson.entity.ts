@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Weapon } from 'src/modules/weapon/entities/Weapon.entity';
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'basictechniquelesson' })
 export class Basictechniquelesson {
@@ -28,4 +29,8 @@ export class Basictechniquelesson {
 
   @Column({ name: 'Author' })
   Author?: number;
+
+  @ManyToOne(() => Weapon, (weapon) => weapon.basictechniquelessons)
+  @JoinColumn({ name: 'IdWeapons' })
+  weapon?: Weapon;
 }

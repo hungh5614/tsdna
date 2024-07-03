@@ -1,3 +1,4 @@
+import { Basictechniquelesson } from 'src/modules/basictechniquelesson/entities/Basictechniquelesson.entity';
 import { Gun } from 'src/modules/gun/entities/gun.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
@@ -16,5 +17,8 @@ export class Weapon {
   Description?: string;
 
   @OneToMany(() => Gun, (gun) => gun.weapon)
-  gun?: Gun;
+  gun?: Gun[];
+
+  @OneToMany(() => Basictechniquelesson, (basic) => basic.weapon)
+  basictechniquelessons?: Basictechniquelesson[];
 }

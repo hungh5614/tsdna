@@ -28,8 +28,11 @@ export class BulletService extends BaseService {
       limit = 10,
       sortBy,
       sortOrder,
+      idWeapon
     } = query;
     const queryBuilder = await this.bulletRepository.paginate('g', limit, page);
+
+    if (idWeapon) queryBuilder.andWhere(`g.idWeapon = :idWeapon`, { idWeapon });
 
     if (sortBy) {
       let order: 'ASC' | 'DESC' = 'ASC';

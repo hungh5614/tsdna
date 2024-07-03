@@ -39,6 +39,7 @@ export class BasictechniquelessonService extends BaseService {
       queryBuilder.orderBy(`b.${sortBy}`, order);
     }
 
+    queryBuilder.leftJoinAndSelect('b.weapon', 'w');
     const [result, total] = await queryBuilder.getManyAndCount();
     return {
       data: result,

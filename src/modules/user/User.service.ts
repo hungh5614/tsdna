@@ -35,13 +35,14 @@ export class UserService extends BaseService {
         keyword: `%${keyword}%`,
       });
     }
+    queryBuilder.andWhere(`u.IdRoles != 1`);
 
     if (sortBy) {
       let order: 'ASC' | 'DESC' = 'ASC';
       if (sortOrder && sortOrder.toUpperCase() === 'DESC') {
         order = 'DESC';
       }
-      queryBuilder.orderBy(`user.${sortBy}`, order);
+      queryBuilder.orderBy(`u.${sortBy}`, order);
     }
 
     const [result, total] = await queryBuilder.getManyAndCount();
