@@ -31,6 +31,10 @@ export class BasictechniquelessonService extends BaseService {
       page,
     );
 
+    if(keyword){
+      queryBuilder.andWhere(`b.Name LIKE :keyword`, { keyword: `%${keyword}%` });
+    }
+
     if (sortBy) {
       let order: 'ASC' | 'DESC' = 'ASC';
       if (sortOrder && sortOrder.toUpperCase() === 'DESC') {

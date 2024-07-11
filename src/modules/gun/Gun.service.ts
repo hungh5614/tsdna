@@ -63,4 +63,8 @@ export class GunService extends BaseService {
         total % limit === 0 ? total / limit : Math.ceil(total / limit),
     };
   }
+
+  async findOne(id: number) {
+    return await this.gunRepository.findOne({ where: { idgun: id }, relations: ['weapon']});
+  }
 }

@@ -17,4 +17,10 @@ export class UserController {
   async sigin(@Body() dto: User) {
     return await this.userService.sigin(dto);
   }
+
+  @Get(':id')
+  async findOne(@Param('id') id: number): Promise<User> {
+    return await this.userService.findOne(id);
+  }
+  
 }

@@ -1,6 +1,7 @@
 import {
   Controller,
   Get,
+  Param,
   Query,
 } from '@nestjs/common';
 import { Pagination } from 'src/utilities/base.interface';
@@ -15,4 +16,10 @@ export class LaserController {
   async findAll(@Query() query): Promise<Pagination<Laser>> {
     return await this.laserService.findAll(query);
   }
+
+  @Get(':id')
+  async findOne(@Param('id') id: number): Promise<Laser> {
+    return await this.laserService.findOne(id);
+  }
+  
 }

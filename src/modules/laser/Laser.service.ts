@@ -56,4 +56,8 @@ export class LaserService extends BaseService {
         total % limit === 0 ? total / limit : Math.ceil(total / limit),
     };
   }
+
+  async findOne(id: number) {
+    return await this.laserRepository.findOne({ where: { idlaser: id } });
+  }
 }

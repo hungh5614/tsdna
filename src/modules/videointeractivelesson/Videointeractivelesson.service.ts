@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { Pagination } from 'src/utilities/base.interface';
-import { Techniquelesson } from './entities/Techniquelesson.entity';
-import { TechniquelessonRepository } from './repositories/Techniquelesson.repository';
+import { Videointeractivelesson } from './entities/Videointeractivelesson.entity';
+import { VideointeractivelessonRepository } from './repositories/Videointeractivelesson.repository';
 
 export interface ObjectLiteral {
   [key: string]: any;
@@ -17,19 +17,23 @@ class BaseService {
 }
 
 @Injectable()
-export class TechniquelessonService extends BaseService {
-  constructor(private techniquelessonRepository: TechniquelessonRepository) {
-    super(techniquelessonRepository);
+export class VideointeractivelessonService extends BaseService {
+  constructor(private videointeractivelessonRepository: VideointeractivelessonRepository) {
+    super(videointeractivelessonRepository);
   }
 
 
-  async findAll(query: any): Promise<Pagination<Techniquelesson>> {
+  async findAll(query: any): Promise<Pagination<Videointeractivelesson>> {
     const { page = 1, limit = 10, sortBy, sortOrder, keyword } = query;
-    const queryBuilder = await this.techniquelessonRepository.paginate(
+    const queryBuilder = await this.videointeractivelessonRepository.paginate(
       'b',
       limit,
       page,
     );
+
+    if(keyword){
+      queryBuilder.andWhere(`b.Name LIKE :keyword`, { keyword: `%${keyword}%` });
+    }
 
     if (sortBy) {
       let order: 'ASC' | 'DESC' = 'ASC';
@@ -38,7 +42,8 @@ export class TechniquelessonService extends BaseService {
       }
       queryBuilder.orderBy(`b.${sortBy}`, order);
     }
-
+    
+    queryBuilder.leftJoinAndSelect('b.weapon', 'w');
     const [result, total] = await queryBuilder.getManyAndCount();
     return {
       data: result,

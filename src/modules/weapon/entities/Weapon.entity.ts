@@ -1,5 +1,6 @@
 import { Basictechniquelesson } from 'src/modules/basictechniquelesson/entities/Basictechniquelesson.entity';
 import { Gun } from 'src/modules/gun/entities/gun.entity';
+import { Videointeractivelesson } from 'src/modules/videointeractivelesson/entities/Videointeractivelesson.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'weapon' })
@@ -21,4 +22,7 @@ export class Weapon {
 
   @OneToMany(() => Basictechniquelesson, (basic) => basic.weapon)
   basictechniquelessons?: Basictechniquelesson[];
+
+  @OneToMany(() => Videointeractivelesson, (basic) => basic.weapon)
+  videointeractivelesson?: Videointeractivelesson[];
 }

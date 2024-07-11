@@ -7,12 +7,12 @@ import { FileModule } from './modules/file/file.module';
 import { WeaponModule } from './modules/weapon/Weapon.module';
 import { BasictechniquelessonModule } from './modules/basictechniquelesson/Basictechniquelesson.module';
 import { GunModule } from './modules/gun/Gun.module';
-import { TechniquelessonModule } from './modules/techniquelesson/Techniquelesson.module';
 import { LaserModule } from './modules/laser/Laser.module';
 import { BulletModule } from './modules/bullet/Bullet.module';
 import { WeatherModule } from './modules/weather/Weather.module';
 import { TsvresultModule } from './modules/tsvresult/Tsvresult.module';
 import { ScenarioModule } from './modules/cenario/Cenario.module';
+import { VideointeractivelessonModule } from './modules/videointeractivelesson/Videointeractivelesson.module';
 
 @Module({
   imports: [
@@ -22,7 +22,7 @@ import { ScenarioModule } from './modules/cenario/Cenario.module';
     WeaponModule,
     BasictechniquelessonModule,
     GunModule,
-    TechniquelessonModule,
+    VideointeractivelessonModule,
     BulletModule,
     LaserModule,
     WeatherModule,

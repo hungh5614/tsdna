@@ -2,6 +2,8 @@ import { Injectable, Inject, HttpStatus, HttpException } from '@nestjs/common';
 import { UserRepository } from './repositories/User.repository';
 import { Pagination } from 'src/utilities/base.interface';
 import { User } from './entities/User.entity';
+// import SHA1 from 'crypto-js/sha1';
+import { SHA1 } from 'crypto-js';
 
 export interface ObjectLiteral {
   [key: string]: any;
@@ -60,6 +62,12 @@ export class UserService extends BaseService {
     if(!user.UserName || !user.Password) {
       throw new HttpException('Vui lòng nhập tài khoản hoặc mật khẩu', HttpStatus.BAD_REQUEST);
     }
-    return await this.userRepository.findOneBy({ UserName: user.UserName, IdRoles: 1 });
+    const hashDigest = SHA1(user.Password);
+    return await this.userRepository.findOneBy({ UserName: user.UserName, IdRoles: 1, Password: hashDigest.toString() });
+  }
+
+
+  async findOne(id: number) {
+    return await this.userRepository.findOne({ where: { IdStudent: id } });
   }
 }

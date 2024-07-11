@@ -12,4 +12,9 @@ export class GunController {
     return await this.gunService.findAll(query);
   }
 
+  @Get(':id')
+  async findOne(@Param('id') id: number): Promise<Gun> {
+    return await this.gunService.findOne(id);
+  }
+
 }
