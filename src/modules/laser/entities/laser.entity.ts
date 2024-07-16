@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Gun } from 'src/modules/gun/entities/gun.entity';
+import { Column, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'laser' })
 export class Laser {
@@ -10,4 +11,8 @@ export class Laser {
 
   @Column({ name: 'Color' })
   Color?: string;
+
+  @OneToMany(() => Gun, (value) => value.laser)
+  @JoinColumn({ name: 'idlaser', referencedColumnName: 'idLaser' })
+  gun?: Gun[];
 }

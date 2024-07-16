@@ -54,6 +54,7 @@ export class GunService extends BaseService {
     }
 
     queryBuilder.leftJoinAndSelect('g.weapon', 'w');
+    queryBuilder.leftJoinAndSelect('g.laser', 'l');
     const [result, total] = await queryBuilder.getManyAndCount();
     return {
       data: result,
