@@ -23,6 +23,12 @@ export class Weapon {
   @OneToMany(() => Basictechniquelesson, (basic) => basic.weapon)
   basictechniquelessons?: Basictechniquelesson[];
 
-  @OneToMany(() => Videointeractivelesson, (basic) => basic.weapon)
-  videointeractivelesson?: Videointeractivelesson[];
+  @OneToMany(() => Basictechniquelesson, (basic) => basic.weapon2)
+  basictechniquelessons2?: Basictechniquelesson[];
+
+  @OneToMany(() => Videointeractivelesson, (basic) => basic.weapon1)
+  videointeractivelesson1?: Videointeractivelesson[];
+
+  @OneToMany(() => Videointeractivelesson, (basic) => basic.weapon2)
+  videointeractivelesson2?: Videointeractivelesson[];
 }

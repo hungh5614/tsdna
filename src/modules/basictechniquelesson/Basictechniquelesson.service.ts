@@ -44,6 +44,7 @@ export class BasictechniquelessonService extends BaseService {
     }
 
     queryBuilder.leftJoinAndSelect('b.weapon', 'w');
+    queryBuilder.leftJoinAndSelect('b.weapon2', 'w2');
     const [result, total] = await queryBuilder.getManyAndCount();
     return {
       data: result,

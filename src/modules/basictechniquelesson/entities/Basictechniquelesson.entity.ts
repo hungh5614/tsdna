@@ -30,7 +30,14 @@ export class Basictechniquelesson {
   @Column({ name: 'Author' })
   Author?: number;
 
+  @Column({ name: 'IdWeapon2' })
+  IdWeapon2?: number;
+
   @ManyToOne(() => Weapon, (weapon) => weapon.basictechniquelessons)
   @JoinColumn({ name: 'IdWeapons' })
   weapon?: Weapon;
+
+  @ManyToOne(() => Weapon, (weapon) => weapon.basictechniquelessons2)
+  @JoinColumn({ name: 'IdWeapon2' })
+  weapon2?: Weapon;
 }

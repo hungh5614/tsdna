@@ -43,7 +43,8 @@ export class VideointeractivelessonService extends BaseService {
       queryBuilder.orderBy(`b.${sortBy}`, order);
     }
     
-    queryBuilder.leftJoinAndSelect('b.weapon', 'w');
+    queryBuilder.leftJoinAndSelect('b.weapon1', 'w1');
+    queryBuilder.leftJoinAndSelect('b.weapon2', 'w2');
     const [result, total] = await queryBuilder.getManyAndCount();
     return {
       data: result,

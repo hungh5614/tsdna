@@ -13,6 +13,7 @@ import { WeatherModule } from './modules/weather/Weather.module';
 import { TsvresultModule } from './modules/tsvresult/Tsvresult.module';
 import { ScenarioModule } from './modules/cenario/Cenario.module';
 import { VideointeractivelessonModule } from './modules/videointeractivelesson/Videointeractivelesson.module';
+import { TargetModule } from './modules/target/Target.module';
 
 @Module({
   imports: [
@@ -27,7 +28,8 @@ import { VideointeractivelessonModule } from './modules/videointeractivelesson/V
     LaserModule,
     WeatherModule,
     TsvresultModule,
-    ScenarioModule
+    ScenarioModule,
+    TargetModule
   ],
   controllers: [AppController],
   providers: [AppService],

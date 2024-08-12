@@ -3,34 +3,35 @@ import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 't
 
 @Entity({ name: 'videointeractivelesson' })
 export class Videointeractivelesson {
-  @PrimaryGeneratedColumn({ name: 'idVideoInteractiveLesson' })
-  idVideoInteractiveLesson?: number;
+  @PrimaryGeneratedColumn({ name: 'idLesson' })
+  idLesson?: number;
 
-  @Column({ name: 'Name' })
-  Name: string;
+  @Column({ name: 'name' })
+  name: string;
 
-  @Column({ name: 'IdScene' })
-  IdScene: number;
+  @Column({ name: 'bulletLimit' })
+  bulletLimit?: number;
 
-  @Column({ name: 'BulletLimit' })
-  BulletLimit?: number;
+  @Column({ name: 'description' })
+  description?: string;
 
-  @Column({ name: 'IdWeapons' })
-  IdWeapons?: number;
+  @Column({ name: 'data', type: 'json' })
+  data?: string;
 
-  @Column({ name: 'Description' })
-  Description?: string;
+  @Column({ name: 'IdWeapon01' })
+  IdWeapon01?: number;
 
-  @Column({ name: 'Data' })
-  Data?: string;
+  @Column({ name: 'IdWeapon02' })
+  IdWeapon02?: number;
 
-  @Column({ name: 'IsLessonDefault' })
-  IsLessonDefault?: number;
+  @Column({ name: 'SceneFileName' })
+  SceneFileName?: string;
 
-  @Column({ name: 'Author' })
-  Author?: number;
+  @ManyToOne(() => Weapon, (weapon) => weapon.videointeractivelesson1)
+  @JoinColumn({ name: 'IdWeapon01', referencedColumnName: 'IdWeapon' })
+  weapon1?: Weapon;
 
-  @ManyToOne(() => Weapon, (weapon) => weapon.videointeractivelesson)
-  @JoinColumn({ name: 'IdWeapons' })
-  weapon?: Weapon;
+  @ManyToOne(() => Weapon, (weapon) => weapon.videointeractivelesson2)
+  @JoinColumn({ name: 'IdWeapon02', referencedColumnName: 'IdWeapon' })
+  weapon2?: Weapon;
 }

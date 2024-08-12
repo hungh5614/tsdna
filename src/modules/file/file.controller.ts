@@ -1,8 +1,11 @@
 import {
   Body,
   Controller,
+  Get,
+  Param,
   Post,
   Req,
+  StreamableFile,
   UploadedFile,
   UploadedFiles,
 } from '@nestjs/common';
@@ -24,6 +27,8 @@ import { v4 as uuidv4 } from 'uuid';
 import * as process from 'process';
 import * as ffmpeg from 'fluent-ffmpeg';
 import * as ffprobe from 'ffprobe-static';
+import { createReadStream } from 'fs';
+import { join } from 'path';
 
 const currentDate = new Date();
 type File = Express.Multer.File;
@@ -53,6 +58,17 @@ export class FileController {
     @Body() body: MultipleFileDTO,
   ) {
     return { ...body, photo_url: filesMapper({ files, req }) };
+  }
+
+  @Get('/TargetImage/:filename')
+  getFile(@Param('filename') filename) {
+    const file = createReadStream(
+      join(
+        process.cwd(),
+        'file/TargetImage/' + filename,
+      ),
+    );
+    return new StreamableFile(file);
   }
 
   @Post('api/file/video')
