@@ -14,6 +14,12 @@ import { TsvresultModule } from './modules/tsvresult/Tsvresult.module';
 import { ScenarioModule } from './modules/cenario/Cenario.module';
 import { VideointeractivelessonModule } from './modules/videointeractivelesson/Videointeractivelesson.module';
 import { TargetModule } from './modules/target/Target.module';
+import { AddonscoreModule } from './modules/addonscore/addonscore.module';
+import { CalibgunModule } from './modules/calibgun/addonscore.module';
+import { SceneModule } from './modules/scene/scene.module';
+import { TargetcoverinlessonModule } from './modules/targetcoverinlesson/targetcoverinlesson.module';
+import { TargetpositionmoveModule } from './modules/targetpositionmove/targetpositionmove.module';
+import { TechniquelessonModule } from './modules/techniquelesson/techniquelesson.module';
 
 @Module({
   imports: [
@@ -29,7 +35,13 @@ import { TargetModule } from './modules/target/Target.module';
     WeatherModule,
     TsvresultModule,
     ScenarioModule,
-    TargetModule
+    TargetModule,
+    AddonscoreModule,
+    CalibgunModule,
+    SceneModule,
+    TargetcoverinlessonModule,
+    TargetpositionmoveModule,
+    TechniquelessonModule
   ],
   controllers: [AppController],
   providers: [AppService],
